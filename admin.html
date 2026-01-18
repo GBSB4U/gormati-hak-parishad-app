@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GorMati Hak Parishad – Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Admin Panel</h1>
+    <p>Founder Review Dashboard</p>
+  </header>
+
+  <main>
+    <section>
+      <input type="password" id="adminKey" placeholder="Enter Admin Key" />
+      <button onclick="loadSubmissions()">Access</button>
+    </section>
+
+    <section id="submissions"></section>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
