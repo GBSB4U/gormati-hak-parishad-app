@@ -3,50 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GorMati Hak Parishad</title>
-
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0b3d2e">
-
-  <link rel="stylesheet" href="styles.css">
+  <title>Gormati Hak Parishad</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <header>
-    <h1>GorMati Hak Parishad</h1>
-    <p>Citizen Hak Infrastructure</p>
-  </header>
 
-  <main>
-    <section>
-      <h2>Submit Your Hak</h2>
-      <form id="hakForm">
-        <input type="text" placeholder="Your Name (optional)" />
-        <textarea placeholder="Describe your issue / hak..." required></textarea>
-        <input type="file" accept="image/*,audio/*" />
-        <button type="submit">Submit</button>
-      </form>
-    </section>
+<header>
+  <h1>Gormati Hak Parishad</h1>
+  <p>Citizen Rights & Notice Infrastructure</p>
+</header>
 
-    <section>
-      <h2>Status</h2>
-      <p>Submitted → Under Review → Resolution</p>
-    </section>
-  </main>
+<main>
+  <section class="card">
+    <h2>📢 Public Notices</h2>
+    <p>Official announcements for citizens</p>
+    <a href="notice.html" class="btn">View Notices</a>
+  </section>
 
-  <footer>
-    <p>GBSB4U • Vasudhaiva Kutumbakam</p>
-  </footer>
+  <section class="card">
+    <h2>⚖️ Citizen Rights</h2>
+    <p>No data sale · No political tagging · Ethical governance</p>
+  </section>
 
-  <script src="app.js"></script>
-  <script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("service-worker.js")
-      .then(reg => console.log("Service Worker registered"))
-      .catch(err => console.error("SW failed", err));
-  });
-}
-  </script>
+  <section class="card">
+    <h2>🏛 Governance</h2>
+    <p>Founder-guided oversight under GBSB4U</p>
+  </section>
+</main>
+
+<footer>
+  <p>© GBSB4U | Citizen-First Digital Infrastructure</p>
+</footer>
+
+<script src="app.js"></script>
 </body>
 </html>
