@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>गोरमाटी जनगणना एवं समस्या फॉर्म</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+<header class="header">
+  <h1>गोरमाटी समुदाय जनगणना</h1>
+  <p>टांडा आधारित समस्या संग्रह | हकपरिषद</p>
+</header>
+
+<main class="container">
+
+<form id="censusForm">
+
+<!-- SECTION 1 -->
+<h3>1. व्यक्तिगत जानकारी</h3>
+<label>पूरा नाम</label>
+<input type="text" id="name" required>
+
+<label>मोबाइल नंबर (वैकल्पिक)</label>
+<input type="tel" id="mobile">
+
+<label>परिवार के सदस्य (संख्या)</label>
+<input type="number" id="familyCount" required>
+
+<!-- SECTION 2 -->
+<h3>2. टांडा लोकेशन</h3>
+<label>राज्य</label>
+<input type="text" id="state" required>
+
+<label>जिला</label>
+<input type="text" id="district" required>
+
+<label>तहसील</label>
+<input type="text" id="tehsil">
+
+<label>टांडा / बस्ती का नाम</label>
+<input type="text" id="tanda" required>
+
+<input type="hidden" id="latitude">
+<input type="hidden" id="longitude">
+
+<button type="button" onclick="getLocation()">📍 लोकेशन कैप्चर करें</button>
+
+<!-- SECTION 3 -->
+<h3>3. समस्या के क्षेत्र</h3>
+<label><input type="checkbox" value="पानी"> पानी</label>
+<label><input type="checkbox" value="सड़क"> सड़क</label>
+<label><input type="checkbox" value="बिजली"> बिजली</label>
+<label><input type="checkbox" value="स्वास्थ्य"> स्वास्थ्य</label>
+<label><input type="checkbox" value="शिक्षा"> शिक्षा</label>
+<label><input type="checkbox" value="राशन"> राशन / दस्तावेज</label>
+<label><input type="checkbox" value="आवास"> आवास</label>
+
+<!-- SECTION 4 -->
+<h3>4. समस्या का विवरण</h3>
+<textarea id="problem" rows="4" required></textarea>
+
+<label>कितने वर्षों से समस्या है?</label>
+<input type="text" id="duration">
+
+<label>कितने परिवार प्रभावित?</label>
+<input type="number" id="affected">
+
+<!-- SECTION 5 -->
+<h3>5. प्रमाण (वैकल्पिक)</h3>
+<input type="file" id="evidence">
+
+<button type="submit">📨 फॉर्म सबमिट करें</button>
+
+</form>
+
+<p class="note">
+यह फॉर्म नागरिक सुविधा हेतु है।  
+हकपरिषद एक समन्वयक संस्था है, शासकीय प्राधिकरण नहीं।
+</p>
+
+</main>
+
+<script src="./census.js"></script>
+</body>
+</html>
