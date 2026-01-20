@@ -1,11 +1,12 @@
 {
-  "name": "GorMati Hak Parishad",
-  "short_name": "GorMati Hak",
-  "description": "Citizen Hak Infrastructure by GBSB4U",
-  "start_url": "./index.html",
+  "name": "Gormati Hak Parishad",
+  "short_name": "GHP",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0b3d2e",
+  "theme_color": "#0b3d91",
+  "orientation": "portrait",
+  "description": "Citizen-first digital notice and rights infrastructure by GBSB4U",
   "icons": [
     {
       "src": "icon-192.png",
