@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -13,6 +13,23 @@
     <p>Founder Review Dashboard</p>
   </header>
 
+<h2>Notice Generator (Founder Access)</h2>
+
+<label>Title</label><br />
+<input type="text" id="title" /><br /><br />
+
+<label>Date</label><br />
+<input type="date" id="date" /><br /><br />
+
+<label>Content</label><br />
+<textarea id="content" rows="5"></textarea><br /><br />
+
+<button onclick="generateNotice()">Generate JSON</button>
+
+<pre id="output"></pre>
+
+<script src="admin.js"></script>
+  
   <main>
     <section>
       <input type="password" id="adminKey" placeholder="Enter Admin Key" />
