@@ -1,62 +1,40 @@
-import { db } from "./src/config.js";
-import {
-  collection,
-  getDocs,
-  updateDoc,
-  doc
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+async function generateNotice() {
+  const title = document.getElementById("title").value;
+  const date = document.getElementById("date").value;
+  const content = document.getElementById("content").value;
 
-// 🔐 Temporary Founder Admin Key
-const ADMIN_SECRET = "GBSB4U-FOUNDER-ONLY";
-
-window.loadSubmissions = async function () {
-  const key = document.getElementById("adminKey").value;
-
-  if (key !== ADMIN_SECRET) {
-    alert("Unauthorized Access");
+  if (!title || !date || !content) {
+    alert("All fields are required");
     return;
   }
 
-  const container = document.getElementById("submissions");
-  container.innerHTML = "<p>Loading submissions...</p>";
+  let existingData = { notices: [] };
 
   try {
-    const snapshot = await getDocs(collection(db, "hak_submissions"));
-    container.innerHTML = "";
-
-    snapshot.forEach((docSnap) => {
-      const data = docSnap.data();
-
-      const block = document.createElement("div");
-      block.style.border = "1px solid #ccc";
-      block.style.padding = "10px";
-      block.style.marginBottom = "10px";
-
-      block.innerHTML = `
-        <p><strong>Name:</strong> ${data.name}</p>
-        <p><strong>Issue:</strong> ${data.description}</p>
-        <p><strong>Status:</strong> ${data.status}</p>
-        ${data.evidence ? `<p><a href="${data.evidence}" target="_blank">View Evidence</a></p>` : ""}
-        <button onclick="updateStatus('${docSnap.id}', 'Under Review')">Under Review</button>
-        <button onclick="updateStatus('${docSnap.id}', 'Resolved')">Resolved</button>
-      `;
-
-      container.appendChild(block);
-    });
-
-  } catch (err) {
-    alert("Error loading submissions");
-    console.error(err);
+    const response = await fetch("data.json");
+    if (response.ok) {
+      existingData = await response.json();
+    }
+  } catch (e) {
+    console.warn("No existing data found, creating new.");
   }
-};
 
-window.updateStatus = async function (id, status) {
-  try {
-    const ref = doc(db, "hak_submissions", id);
-    await updateDoc(ref, { status });
-    alert("Status Updated Successfully");
-  } catch (err) {
-    alert("Failed to update status");
-    console.error(err);
-  }
-};
+  const newNotice = {
+    id: Date.now(),
+    title: title,
+    date: date,
+    content: content
+  };
+
+  existingData.notices.unshift(newNotice); // latest on top
+
+  const jsonString = JSON.stringify(existingData, null, 2);
+
+  document.getElementById("output").textContent = jsonString;
+
+  const blob = new Blob([jsonString], { type: "application/json" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "data.json";
+  link.click();
+}
