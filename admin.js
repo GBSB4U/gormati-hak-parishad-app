@@ -25,7 +25,11 @@ async function generateNotice() {
     date: date,
     content: content
   };
-
+const pass = prompt("Enter Admin Key");
+if (pass !== "GBSB4U-FOUNDER") {
+  alert("Unauthorized access");
+  window.location.href = "index.html";
+}
   existingData.notices.unshift(newNotice); // latest on top
 
   const jsonString = JSON.stringify(existingData, null, 2);
